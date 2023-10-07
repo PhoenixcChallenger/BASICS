@@ -1,0 +1,26 @@
+.grandparent {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
+    background-color: hsl(0, 50%, 50%);
+    height: 500px;
+    width: 450px;
+    border: 5px solid black;
+}
+
+.parent {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 180px;
+    background-color: hsl(100, 50%, 50%);
+    width: 350px;
+    border: 5px solid black;
+}
+.child{
+    height: 100px;
+    width: 100px;
+    background-color: hsl(200, 50%, 50%);
+    border: 5px solid black;
+}
