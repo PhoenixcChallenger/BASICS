@@ -1,0 +1,8 @@
+{
+    "title" : "How to learn HTML",
+    "content" : "HTML, or HyperText Markup Language, is the standard markup language used to create web pages. It is written in the form of HTML elements consisting of tags enclosed in angle brackets. HTML tags most commonly come in pairs like `<h1>` and `</h1>`, although some represent empty elements and so are unpaired, for example `<img>`. The first HTML version was released in 1991 by Tim Berners-Lee. It defines the structure of web content. HTML is easy to learn and it provides a friendly way for beginners to create websites. HTML5, the latest version, includes specifications for audio and video without plugins, giving it a significant advantage over previous versions. HTML also allows the use of JavaScript and CSS to change the layout and appearance of web pages, providing a comprehensive solution for creating complex web applications.",
+    "author":"Kunal Maloo",
+    "key":2,
+    "slug" : "how-to-learn-HTML",
+    "image_url":"https://www.investopedia.com/thmb/33J47lYaGMBV4nx8vdJNtHBv3cY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/html.asp-final-86da30eff12f46f3a1394efb0b137103.png"
+}

@@ -1,0 +1,8 @@
+{
+    "title" : "How to learn CSS",
+    "content" : "Cascading Style Sheets (CSS) is a style sheet language used for describing the look and formatting of a document written in HTML or XML. CSS describes how elements should be rendered on screen, on paper, in speech, or on other media. CSS is one of the core languages of the open web and has a standardized W3C specification. Developed in levels, CSS1 is now obsolete, CSS2.1 is a recommendation, and CSS3, now split into smaller modules, is progressing on the standardization track.",
+    "author":"Kunal Maloo",
+    "key":1,
+    "slug" : "how-to-learn-CSS",
+    "image_url":"https://www.oxfordwebstudio.com/user/pages/06.da-li-znate/sta-je-css/sta-je-css.png"
+}
