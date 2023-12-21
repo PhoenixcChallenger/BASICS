@@ -1,36 +1,91 @@
-import React from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { setPageCount } from "../features/paginationSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { isVisibleAction } from "../features/addtocartSlice";
 
-function Header() {
-    return(
-        <div>
-          <header className="px-8 py-4">
-            <nav className="grid grid-cols-2 ">
-                <div className="flex items-center">
-                    <div className="flex">
-                        <img src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/organic-store-logo5.svg" alt="logo" className="w-36"></img>
+
+function Header(props) {
+  const dispatch = useDispatch();
+  const quantity = useSelector((state) => state.addtocart.quantity);
+  const cartItem = useSelector((state) => state.addtocart.items);
+
+  return (
+    <div>
+      <header
+        className="px-8 py-4"
+        style={{ backgroundColor: `${props.background}` }}
+      >
+        <nav className="grid grid-cols-2 ">
+          <div className="flex items-center">
+            <div className="flex">
+              <a href="/">
+                <img
+                  src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/organic-store-logo5.svg"
+                  alt="logo"
+                  className="w-36"
+                ></img>
+              </a>
+            </div>
+            <div>
+              <ul className="flex">
+                <li className="px-5 cursor-pointer transition ease-in-out delay-75 hover:text-nature-green" style={{ color: `${props.everythingColor}` }}>
+                  <Link to="/product-category/shop" onClick={dispatch(setPageCount(1))}>Everything</Link>
+                </li>
+                <li className="px-5 cursor-pointer transition ease-in-out delay-75 hover:text-nature-green" style={{ color: `${props.groceryColor}` }}>
+                  <Link to="/product-category/grocery" onClick={dispatch(setPageCount(1))}>Groceries</Link>
+                </li>
+                <li className="px-5 cursor-pointer transition ease-in-out delay-75 hover:text-nature-green" style={{ color: `${props.juiceColor}` }}>
+                  <Link to="/product-category/juice" onClick={dispatch(setPageCount(1))}>Juice</Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="flex justify-end items-center">
+            <div>
+              <ul className="flex">
+                <li className="px-5 transition ease-in-out delay-75 hover:text-nature-green cursor-pointer" style={{ color: `${props.aboutColor}` }}>
+                  <Link to="/about">About</Link>
+                </li>
+                <li className="px-5 transition ease-in-out delay-75 hover:text-nature-green cursor-pointer" style={{ color: `${props.contactColor}` }}>
+                  <a href="/contact">Contact</a>
+                </li>
+                <li className="px-5">
+
+                  <button className="flex" onClick={() => { dispatch(isVisibleAction(true)) }}>
+                    <div className="mr-2 text-nature-green font-bold">
+                      {
+                        quantity ? (
+                          <p>£{cartItem[0].price * quantity}.00</p>
+                        ) : (<p>£0.00</p>)
+                      }
                     </div>
-                    <div>
-                        <ul className="flex">
-                            <li className="px-5 cursor-pointer transition ease-in-out delay-75 hover:text-nature-green">Everything</li>
-                            <li className="px-5 cursor-pointer transition ease-in-out delay-75 hover:text-nature-green">Groceries</li>
-                            <li className="px-5 cursor-pointer transition ease-in-out delay-75 hover:text-nature-green">Juice</li>
-                        </ul>
+                    <div className="relative" >
+                      <FontAwesomeIcon icon={faCartShopping} style={{ color: "#8bc34a", }} />
+                      <span className="h-4 w-4 rounded-full bg-nature-green flex items-center justify-center absolute top-[-5px] left-3 drop-shadow-2xl">
+                        <p className="font-bold text-sm">{quantity}</p>
+                      </span>
                     </div>
-                </div>
-                <div className="flex justify-end items-center">
-                    <div>
-                        <ul className="flex">
-                            <li className="px-5 transition ease-in-out delay-75 hover:text-nature-green cursor-pointer">About</li>
-                            <li className="px-5 transition ease-in-out delay-75 hover:text-nature-green cursor-pointer">Contact</li>
-                            <li className="px-5"><a href="#shopping-cart"><img src={require("../shopping-basket.png")} className="h-5 w-5"></img></a></li>
-                            <li className="px-5"><a href="#login"><img src={require("../user.png")} className = "h-5 w-5" ></img></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-          </header>  
-        </div>
-    )
+                  </button>
+
+                </li>
+                <li className="px-5">
+                  <a href="/login">
+                    <img
+                      src={require("../images/user.png")}
+                      className="h-5 w-5"
+                      alt=""
+                    ></img>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+    </div>
+  );
 }
 
 export default Header;
