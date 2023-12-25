@@ -5,11 +5,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { isVisibleAction } from "../features/addtocartSlice";
 
+// import { useEffect, useState } from "react";
+
 
 function Header(props) {
   const dispatch = useDispatch();
-  const quantity = useSelector((state) => state.addtocart.quantity);
+  const totalQuantity = useSelector((state) => state.addtocart.totalQuantity);
   const cartItem = useSelector((state) => state.addtocart.items);
+  let sum = 0;
+  cartItem.map((item) => {
+    return (sum += (item.price * item.quantity));
+  })
 
   return (
     <div>
@@ -56,15 +62,15 @@ function Header(props) {
                   <button className="flex" onClick={() => { dispatch(isVisibleAction(true)) }}>
                     <div className="mr-2 text-nature-green font-bold">
                       {
-                        quantity ? (
-                          <p>£{cartItem[0].price * quantity}.00</p>
+                        totalQuantity && cartItem ? (
+                          <p>£{sum}.00</p>
                         ) : (<p>£0.00</p>)
                       }
                     </div>
                     <div className="relative" >
                       <FontAwesomeIcon icon={faCartShopping} style={{ color: "#8bc34a", }} />
                       <span className="h-4 w-4 rounded-full bg-nature-green flex items-center justify-center absolute top-[-5px] left-3 drop-shadow-2xl">
-                        <p className="font-bold text-sm">{quantity}</p>
+                        <p className="font-bold text-sm">{totalQuantity}</p>
                       </span>
                     </div>
                   </button>
