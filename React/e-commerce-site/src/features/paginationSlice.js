@@ -12,17 +12,15 @@ const paginationSlice = createSlice({
             state.currentPage += 1;
         },
         prevPage: (state) => {
-
             state.currentPage -= 1;
-
         },
-        setPageCount: (state, action) => {
-            state.pageCount = action.payload;
-        },
+        setCurrentPage: (state, action) => {
+            state.currentPage = action.payload;
+        }
     },
 });
 
 // console.log(paginationSlice.actions.prevPage());
 
-export const { nextPage, prevPage, setPageCount } = paginationSlice.actions;
+export const { nextPage, prevPage, setCurrentPage } = paginationSlice.actions;
 export default paginationSlice.reducer;

@@ -1,20 +1,24 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { nextPage, prevPage, setPageCount } from '../features/paginationSlice';
+import { nextPage, prevPage, setCurrentPage } from '../features/paginationSlice';
+import { useEffect, useState } from 'react';
 
 const Pagination = (props) => {
     const products = props.products;
     const dispatch = useDispatch();
     const currentPage = useSelector((state) => state.pagination.currentPage);
-    const pageCount = useSelector((state) => state.pagination.pageCount);
+    const [pageCount, setPageCount] = useState(1);
 
-    let newPageCount = 1;
-    const x = products.length;
-    if (x % 9 === 0) {
-        newPageCount = x / 9;
-    } else {
-        newPageCount = Math.floor(x / 9) + 1;
-    }
-    dispatch(setPageCount(newPageCount));
+    useEffect(() => {
+        let newPageCount = 1;
+        const x = products.length;
+        if (x % 9 === 0) {
+            newPageCount = x / 9;
+        } else {
+            newPageCount = Math.floor(x / 9) + 1;
+        }
+        setPageCount(newPageCount);
+        dispatch(setCurrentPage(1));
+    }, [products, dispatch])
 
     return (
         <>

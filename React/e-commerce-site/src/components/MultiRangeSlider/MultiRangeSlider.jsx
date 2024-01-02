@@ -42,7 +42,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
   }, [minVal, maxVal, onChange]);
 
   return (
-    <div className="container">
+    <div className="flex h-16">
       <input
         type="range"
         min={min}
@@ -53,7 +53,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
           setMinVal(value);
           minValRef.current = value;
         }}
-        className="thumb thumb--left"
+        className="thumb thumb--left absolute z-[3] w-[15rem] h-0"
         style={{ zIndex: minVal > max - 100 && "5" }}
       />
       <input
@@ -66,14 +66,14 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
           setMaxVal(value);
           maxValRef.current = value;
         }}
-        className="thumb thumb--right"
+        className="thumb thumb--right absolute z-[4] lg:w-[15rem] w-[96%] h-0"
       />
 
-      <div className="slider">
-        <div className="slider__track" />
-        <div ref={range} className="slider__range" />
-        <div className="slider__left-value">{minVal}</div>
-        <div className="slider__right-value">{maxVal}</div>
+      <div className="relative w-full lg:w-[15rem]">
+        <div className="absolute h-[5px] bg-[#ced4da] w-full z-[1]" />
+        <div ref={range} className="bg-[#8bc34a] absolute h-[5px] z-[2]" />
+        <div className="slider__left-value absolute right-12 mt-[20px] px-3 py-1 rounded-[5px] border-[1px]">{minVal}</div>
+        <div className="slider__right-value right-[-1px] absolute mt-[20px] px-3 py-1 rounded-[5px] border-[1px]">{maxVal}</div>
       </div>
     </div>
   );

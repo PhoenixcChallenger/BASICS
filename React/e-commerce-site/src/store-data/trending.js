@@ -4,6 +4,7 @@ const trending = [
         "name": "Assorted Coffee",
         "price": "35.00",
         "image": "coffee-asorted-1000x1000.jpg",
+        "smallimage": "coffee-asorted-300x300.jpg",
         "key": "1"
     },
     {
@@ -11,6 +12,7 @@ const trending = [
         "name": "Fresh Orange Juice",
         "price": "18.00",
         "image": "orage-juice-kariz-400x400.jpg",
+        "smallimage": "orage-juice-kariz-300x300.jpg",
         "key": "8"
     },
     {
@@ -18,6 +20,7 @@ const trending = [
         "name": "Hand Sanitizer",
         "price": "15.00",
         "image": "sanitizer-400x400.jpg",
+        "smallimage": "sanitizer-300x300.jpg",
         "key": "6"
     },
     {
@@ -25,6 +28,7 @@ const trending = [
         "name": "Handpicked Red Chillies",
         "price": "19.00",
         "image": "red-chillies-400x400.jpg",
+        "smallimage": "red-chillies-300x300.jpg",
         "key": "7"
     },
 

@@ -14,7 +14,7 @@ const ProductPage = () => {
     const thisProduct = products.find((prod) => prod.key === id);
     const productImg = require(`../images/products/${thisProduct.image}`);
     const cartItems = useSelector((state) => state.addtocart.items);
-    // const quantity = useSelector((state) => state.addtocart.totalQuantity);
+    console.log(thisProduct);
 
     const handleChange = (e) => {
         setValue(parseInt(e.target.value));
@@ -48,11 +48,11 @@ const ProductPage = () => {
             <div className='bg-content-background'>
                 <div className='flex m-auto max-w-[1240px] p-5'>
                     <div className='mt-8'>
-                        <div className='flex'>
+                        <div className='flex flex-col md:flex-row'>
                             <div>
-                                <img src={productImg} alt={`${thisProduct.name}`} className='h-[35rem] w-[35rem]' />
+                                <img src={productImg} alt={`${thisProduct.name}`} className=' w-[35rem]' />
                             </div>
-                            <div className='pl-10 w-1/2'>
+                            <div className='md:pl-10 md:w-1/2'>
                                 <h1 className='font-merriweather font-bold text-3xl mb-4'>{thisProduct.name}</h1>
                                 <div className='mb-3'>
                                     <h2 className='font-merriweather font-bold text-2xl inline'>£{thisProduct.price}</h2>

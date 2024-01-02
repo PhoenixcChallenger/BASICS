@@ -2,8 +2,8 @@ import React from 'react'
 
 function CardTemplate(props) {
     return (
-        <section className="w-1/4">
-            <div className="flex bg-[#333333] p-9 m-2 rounded-sm">
+        <section>
+            <div className="flex h-full bg-[#333333] p-9 m-2 rounded-sm">
                 <div>
                     <img src={props.image} className="w-8 h-8 mr-3" alt='' ></img>
                 </div>
