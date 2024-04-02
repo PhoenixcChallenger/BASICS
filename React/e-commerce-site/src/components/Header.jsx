@@ -31,24 +31,24 @@ function Header(props) {
             <nav className="grid grid-cols-2 ">
               <div className="flex items-center">
                 <div className="flex">
-                  <a href="/">
+                  <Link to="/">
                     <img
                       src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/organic-store-logo5.svg"
                       alt="logo"
                       className="w-36"
                     ></img>
-                  </a>
+                  </Link>
                 </div>
                 <div>
                   <ul className="flex">
-                    <li className="px-5 cursor-pointer transition ease-in-out delay-75 hover:text-nature-green" style={{ color: `${props.everythingColor}` }}>
-                      <Link to="/product-category/shop" >Everything</Link>
+                    <li className="px-5 cursor-pointer transition ease-in-out delay-75 " style={{ color: `${props.everythingColor}` }}>
+                      <Link to="/product-category/shop" className="hover:text-nature-green">Everything</Link>
                     </li>
-                    <li className="px-5 cursor-pointer transition ease-in-out delay-75 hover:text-nature-green" style={{ color: `${props.groceryColor}` }}>
-                      <Link to="/product-category/grocery" >Groceries</Link>
+                    <li className="px-5 cursor-pointer transition ease-in-out delay-75" style={{ color: `${props.groceryColor}` }}>
+                      <Link to="/product-category/grocery" className="hover:text-nature-green">Groceries</Link>
                     </li>
-                    <li className="px-5 cursor-pointer transition ease-in-out delay-75 hover:text-nature-green" style={{ color: `${props.juiceColor}` }}>
-                      <Link to="/product-category/juice" >Juice</Link>
+                    <li className="px-5 cursor-pointer transition ease-in-out delay-75" style={{ color: `${props.juiceColor}` }}>
+                      <Link to="/product-category/juice" className="hover:text-nature-green"  >Juice</Link>
                     </li>
                   </ul>
                 </div>
@@ -56,11 +56,11 @@ function Header(props) {
               <div className="flex justify-end items-center">
                 <div>
                   <ul className="flex">
-                    <li className="px-5 transition ease-in-out delay-75 hover:text-nature-green cursor-pointer" style={{ color: `${props.aboutColor}` }}>
-                      <Link to="/about">About</Link>
+                    <li className="px-5 transition ease-in-out delay-75 cursor-pointer" style={{ color: `${props.aboutColor}` }}>
+                      <Link to="/about" className="hover:text-nature-green">About</Link>
                     </li>
-                    <li className="px-5 transition ease-in-out delay-75 hover:text-nature-green cursor-pointer" style={{ color: `${props.contactColor}` }}>
-                      <Link to="/contact">Contact</Link>
+                    <li className="px-5 transition ease-in-out delay-75 cursor-pointer" style={{ color: `${props.contactColor}` }}>
+                      <Link to="/contact" className="hover:text-nature-green">Contact</Link>
                     </li>
                     <li className="px-5">
 
@@ -82,13 +82,13 @@ function Header(props) {
 
                     </li>
                     <li className="px-5">
-                      <a href="/login">
+                      <Link to='/login'>
                         <img
                           src={require("../images/user.png")}
                           className="h-5 w-5"
                           alt=""
                         ></img>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -104,13 +104,13 @@ function Header(props) {
             <nav className="grid grid-cols-2 ">
               <div className="flex items-center">
                 <div className="flex">
-                  <a href="/">
+                  <Link to="/">
                     <img
                       src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/organic-store-logo5.svg"
                       alt="logo"
                       className="w-32"
                     ></img>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="flex justify-end items-center">

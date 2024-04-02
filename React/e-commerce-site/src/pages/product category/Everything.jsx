@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Filter from "../../components/Filter";
-import filterSideProducts from "../../store-data/FilterSideProducts";
 import ProductsContainer from "../../components/ProductsContainer";
 import { products } from "../../store-data/Allproduct";
 import { useDispatch } from "react-redux";
@@ -14,7 +13,7 @@ const Everything = () => {
   useEffect(() => {
     dispatch(searchFilterAction([]));
   }, [dispatch])
-
+  const filterSideProducts = [products[7], products[5], products[10]];
   return (
     <>
       <Header background={"#FFFFFF"} everythingColor={"#8BC34A"} />

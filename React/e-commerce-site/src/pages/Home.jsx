@@ -6,12 +6,11 @@ import BannerImage from "../components/BannerImage.jsx";
 import ProductsPreview from "../components/ProductsPreview.jsx";
 import FoodPreview from "../components/FoodPreview.jsx";
 import CustomerReview from "../components/CustomerReview.jsx";
-import bestSelling from "../store-data/bestSelling.js";
-import trending from "../store-data/trending.js";
+import { products } from "../store-data/Allproduct.js";
 
 const Home = () => {
-  // console.log(bestSelling);
-  // console.log(trending);
+  const bestSelling = [products[0], products[5], products[6], products[7]];
+  const trending = [products[0], products[3], products[6], products[7]];
   return (
     <>
       <Header background={"#FFFFFF"} aboutColor={"#000000"} contactColor={"#000000"} groceryColor={"#000000"} juiceColor={"#000000"} everythingColor={"#000000"} />

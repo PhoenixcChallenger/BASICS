@@ -1,20 +1,28 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import MultiRangeSlider from "./MultiRangeSlider/MultiRangeSlider";
+// import MultiRangeSlider from "./MultiRangeSlider/MultiRangeSlider";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { searchFilterAction } from "../features/filterProductsSlice";
+import { priceFilterAction, searchFilterAction } from "../features/filterProductsSlice";
+import { Range, getTrackBackground } from "react-range";
 
 const Filter = (props) => {
+
   const dispatch = useDispatch();
   let inputValue = '';
   const sideProducts = props.sideProducts;
   const products = props.products;
-  function minMax({ min, max }) {
-    return (`min = ${min}, max = ${max}`);
-  }
+  const STEP = 1;
+  const MIN = 0;
+  const MAX = 40;
   const [filterProducts, setFilterProducts] = useState([]);
+  const [values, setValues] = useState([MIN, MAX]);
+
+  // useEffect(() => {
+  //   ;
+  // }, [values, dispatch]);
+
 
   function handleSearch(e) {
     inputValue = e.target.value.toLowerCase();
@@ -23,10 +31,19 @@ const Filter = (props) => {
     });
     setFilterProducts(filter);
   }
+  function handlePriceFilter(values) {
+    setValues(values);
+    const priceFilter = products.filter(
+      product => product.price >= values[0] && product.price <= values[1]
+    );
+    console.log(priceFilter);
+    setFilterProducts(priceFilter);
+    dispatch(priceFilterAction(filterProducts));
+  }
+
 
   function handleClick(e) {
     e.preventDefault();
-    console.log(filterProducts);
     dispatch(searchFilterAction(filterProducts));
   }
 
@@ -55,13 +72,69 @@ const Filter = (props) => {
           </form>
         </div>
         <div className="mb-10">
-          <div>
-            <h3 className="text-2xl mb-10 font-merriweather">Filter by price</h3>
-            <MultiRangeSlider
-              min={10}
-              max={40}
-              onChange={minMax}
+          <h3 className="text-2xl mb-10 font-merriweather">Filter by price</h3>
+          <div className="flex flex-col items-center">
+            <Range
+              values={values}
+              step={STEP}
+              min={MIN}
+              max={MAX}
+              onChange={(values) => handlePriceFilter(values)}
+              renderTrack={({ props, children }) => (
+                <div
+                  onMouseDown={props.onMouseDown}
+                  onTouchStart={props.onTouchStart}
+                  style={{
+                    ...props.style,
+                    height: "36px",
+                    display: "flex",
+                    width: "100%",
+                  }}
+                >
+                  <div
+                    ref={props.ref}
+                    style={{
+                      height: "5px",
+                      width: "100%",
+                      borderRadius: "4px",
+                      background: getTrackBackground({
+                        values: values,
+                        colors: ["#ccc", "#8bc34a", "#ccc"],
+                        min: MIN,
+                        max: MAX,
+                      }),
+                      alignSelf: "center",
+                    }}
+                  >
+                    {children}
+                  </div>
+                </div>
+              )}
+              renderThumb={({ props, isDragged }) => (
+                <div
+                  {...props}
+                  style={{
+                    ...props.style,
+                    height: "16px",
+                    width: "16px",
+                    borderRadius: "50%",
+                    backgroundColor: "#8bc34a",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                </div>
+              )}
             />
+            <div className="flex w-full justify-between mt-2">
+              <div className="p-3 bg-white">
+                {values[0]}
+              </div>
+              <div className="p-3 bg-white">
+                {values[1]}
+              </div>
+            </div>
           </div>
         </div>
         <div className="flex flex-col">

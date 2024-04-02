@@ -1,7 +1,6 @@
-
 import React from "react";
 import ProductCard from "./ProductCard";
-
+import { Link } from "react-router-dom";
 
 const ProductsPreview = (props) => {
   const productCategory = props.products;
@@ -20,9 +19,11 @@ const ProductsPreview = (props) => {
           {productCategory.map((product) => {
             return (
               <React.Fragment key={product.key}>
-                <div className="p-2.5">
-                  <ProductCard title={product.title} name={product.name} price={product.price} smallimage={product.smallimage} key={product.key} />
-                </div>
+                <Link to={`/product/${product.key}`}>
+                  <div className="p-2.5">
+                    <ProductCard title={product.title} name={product.name} price={product.price} smallimage={product.smallimage} key={product.key} />
+                  </div>
+                </Link>
               </React.Fragment>
             )
           })}

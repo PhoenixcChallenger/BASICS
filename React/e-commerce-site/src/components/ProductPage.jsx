@@ -14,7 +14,6 @@ const ProductPage = () => {
     const thisProduct = products.find((prod) => prod.key === id);
     const productImg = require(`../images/products/${thisProduct.image}`);
     const cartItems = useSelector((state) => state.addtocart.items);
-    console.log(thisProduct);
 
     const handleChange = (e) => {
         setValue(parseInt(e.target.value));
