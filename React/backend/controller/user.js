@@ -41,8 +41,14 @@ export const createUser = async (req, res) => {
     });
   }
   catch (error) {
-    console.error(error);
-    res.status(400).json(error);
+    if (error.code === 11000) {
+      console.log("Duplicate key error->", error);
+      res.status(409).json({ error: "User Already Exists", message: error.message });
+    }
+    else {
+      console.error(error);
+      res.status(400).json(error);
+    }
   }
 };
 
