@@ -13,11 +13,13 @@ import Cart from "./components/Cart";
 import MobNav from "./components/MobNav";
 import CartPage from "./pages/CartPage";
 import Checkout from "./pages/Checkout";
+import ScrollToTop from "./components/ScrollToTop";
 export default function App() {
   return (
     <div>
       <Cart />
       <MobNav />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
